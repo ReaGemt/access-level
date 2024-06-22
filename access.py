@@ -8,22 +8,23 @@ class User:
         self.__name = name
         self.__access_level = 'Пользователь'
         self.__password = password
-
+    # Возвращает уникальный идентификатор пользователя (__user_id).
     def get_user_id(self):
         return self.__user_id
-
+    # Возвращает имя пользователя (__name)
     def get_name(self):
         return self.__name
 
+    # Возвращает уровень доступа пользователя(__access_level)
     def get_access_level(self):
         return self.__access_level
-
+    # Устанавливает новое значение для имени пользователя (__name)
     def set_name(self, name):
         self.__name = name
-
+    # Проверяет, соответствует ли введенный пароль паролю пользователя (__password).
     def check_password(self, password):
         return self.__password == password
-
+    # Устанавливает новый пароль для пользователя (__password)
     def set_password(self, new_password):
         self.__password = new_password
 
@@ -36,13 +37,13 @@ class Admin(User):
     def __init__(self, user_id, name, password):
         super().__init__(user_id, name, password)
         self.__access_level = 'Администратор'
-
+    # Добавляет нового пользователя (user) в список пользователей (user_list).
     def add_user(self, user_list, user):
         user_list.append(user)
-
+    # Удаляет пользователя из списка пользователей (user_list) по его идентификатору (user_id).
     def remove_user(self, user_list, user_id):
         user_list[:] = [user for user in user_list if user.get_user_id() != user_id]
-
+    # Позволяет получить уровень доступа администратора извне класса Admin.
     def get_access_level(self):
         return self.__access_level
 
